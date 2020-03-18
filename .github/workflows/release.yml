@@ -12,11 +12,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - uses: aczigler/node-full-icu
+    - uses: actions/setup-node@v1
 
     - name: Run tests and linting
       run: |
         npm ci
+        npm install -g full-icu
+        NODE_ICU_DATA=/home/node/.npm-global/lib/node_modules/full-icu
         npm run build
         npm test
       env:
