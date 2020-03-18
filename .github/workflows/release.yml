@@ -18,7 +18,7 @@ jobs:
       run: |
         npm ci
         npm install -g full-icu
-        NODE_ICU_DATA=/home/node/.npm-global/lib/node_modules/full-icu
+        NODE_ICU_DATA=/opt/hostedtoolcache/node/10.19.0/x64/lib/node_modules/full-icu
         npm run build
         npm test
       env:
