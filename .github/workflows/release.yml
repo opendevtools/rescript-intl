@@ -15,7 +15,7 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: 13.8
-        
+
     - name: Run tests and linting
       run: |
         npm ci
