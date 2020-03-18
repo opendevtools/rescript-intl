@@ -13,16 +13,19 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
-
+    
+    - name: Install full-icu
+      run: |
+        npm install -g full-icu
+        
     - name: Run tests and linting
       run: |
         npm ci
-        npm install -g full-icu
-        export NODE_ICU_DATA=/opt/hostedtoolcache/node/10.19.0/x64/lib/node_modules/full-icu
         npm run build
         npm test
       env:
         CI: true
+        NODE_ICU_DATA: /opt/hostedtoolcache/node/10.19.0/x64/lib/node_modules/full-icu
 
     - name: Create release using semantic-release
       run: npx semantic-release
