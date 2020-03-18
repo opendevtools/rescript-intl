@@ -39,6 +39,13 @@ let futureDate = Intl.DateTime.make(~date, ~locale=Some("sv-SE"), ());
 // futureDate: string = 2020-11-12 (based on current date)
 ```
 
+with date as string
+
+```reason
+let futureDate = Intl.DateTime.makeFromString(~date="2020-11-12", ~locale=Some("sv-SE"), ());
+// futureDate: string = 2020-11-12 (based on current date)
+```
+
 and with some `options`
 
 ```reason
@@ -77,9 +84,9 @@ let krona =
 #### Decimal
 
 ```reason
-let parsedNumebr =
+let parsedNumber =
   Intl.NumberFormat.Decimal.make(~value=1000., ~locale=Some("sv-SE"), ());
-// parsedNumebr: string = "1 000,00"
+// parsedNumber: string = "1 000,00"
 ```
 
 ## Node
