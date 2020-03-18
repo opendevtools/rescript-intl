@@ -15,10 +15,6 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: 13.8
-    
-    - name: Install full-icu
-      run: |
-        npm install -g full-icu
         
     - name: Run tests and linting
       run: |
@@ -27,7 +23,6 @@ jobs:
         npm test
       env:
         CI: true
-        NODE_ICU_DATA: /opt/hostedtoolcache/node/10.19.0/x64/lib/node_modules/full-icu
 
     - name: Create release using semantic-release
       run: npx semantic-release
