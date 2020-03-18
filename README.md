@@ -1,8 +1,11 @@
 # re-intl
 
+[![npm version](https://badge.fury.io/js/re-intl.svg)](https://badge.fury.io/js/re-intl)
+[![](https://github.com/believer/re-intl/workflows/Release/badge.svg)](https://github.com/believer/re-intl/actions?workflow=Release)
+
 `re-intl` will help you with date, number and currency formatting in ReasonML
 (BuckleScript). Everything is built on top of `Intl` which comes built-in with
-browser >= IE11 as well as node.
+browsers >= IE11 as well as Node.
 
 ## Get started
 
