@@ -36,14 +36,14 @@ with custom date
 let date = Js.Date.makeWithYMD(~year=2020., ~month=11., ~date=12., ());
 
 let futureDate = Intl.DateTime.make(~date, ~locale=Some("sv-SE"), ());
-// futureDate: string = 2020-11-12 (based on current date)
+// futureDate: string = 2020-11-12
 ```
 
 with date as string
 
 ```reason
 let futureDate = Intl.DateTime.makeFromString(~date="2020-11-12", ~locale=Some("sv-SE"), ());
-// futureDate: string = 2020-11-12 (based on current date)
+// futureDate: string = 2020-11-12
 ```
 
 and with some `options`
