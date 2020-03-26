@@ -4,7 +4,7 @@
 [![](https://github.com/believer/re-intl/workflows/Release/badge.svg)](https://github.com/believer/re-intl/actions?workflow=Release)
 
 `re-intl` helps you with date, number and currency formatting in ReasonML
-(BuckleScript). Everything is built on top of `Intl` which comes built-in with
+(BuckleScript). Everything is built on top of [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) which comes built-in with
 browsers >= IE11 as well as Node.
 
 ## Get started
