@@ -1,34 +1,34 @@
-type intl;
+type intl
 
 module Style = {
-  /* Helper for "style" option. `decimal is the browser default */
-  [@bs.deriving {jsConverter: newType}]
-  type opt = [ | `currency | `decimal | `unit];
+  /* Helper for "style" option. #decimal is the browser default */
+  @bs.deriving({jsConverter: newType})
+  type opt = [ | #currency | #decimal | #unit]
 
   include Utils.CreateOption({
-    type t = opt;
-    type abs_t = abs_opt;
-    let make = optToJs;
-  });
-};
+    type t = opt
+    type abs_t = abs_opt
+    let make = optToJs
+  })
+}
 
 /* Options for Intl.NumberFormat */
 type options = {
-  minimumFractionDigits: option(int),
-  maximumFractionDigits: option(int),
-  style: option(Style.abs_t),
-  currency: option(string),
-};
+  minimumFractionDigits: option<int>,
+  maximumFractionDigits: option<int>,
+  style: option<Style.abs_t>,
+  currency: option<string>,
+}
 
 /*
   Intl.NumberFormat
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat
  */
-[@bs.new] [@bs.scope "Intl"]
-external numberFormat: (option(string), options) => intl = "NumberFormat";
+@bs.new @bs.scope("Intl")
+external numberFormat: (option<string>, options) => intl = "NumberFormat"
 
 /* Intl.NumberFormat.prototype.format() */
-[@bs.send] external format: (intl, float) => string = "format";
+@bs.send external format: (intl, float) => string = "format"
 
 module Currency = {
   let make =
@@ -38,7 +38,7 @@ module Currency = {
         ~minimumFractionDigits=Some(2),
         ~maximumFractionDigits=Some(2),
         ~currency=None,
-        ~style=Some(`currency),
+        ~style=Some(#currency),
         (),
       ) => {
     locale
@@ -48,9 +48,9 @@ module Currency = {
         maximumFractionDigits,
         minimumFractionDigits,
       })
-    ->format(value);
-  };
-};
+    ->format(value)
+  }
+}
 
 module Decimal = {
   let make =
@@ -60,7 +60,7 @@ module Decimal = {
         ~minimumFractionDigits=Some(2),
         ~maximumFractionDigits=Some(2),
         ~currency=None,
-        ~style=Some(`decimal),
+        ~style=Some(#decimal),
         (),
       ) => {
     locale
@@ -70,6 +70,6 @@ module Decimal = {
         maximumFractionDigits,
         minimumFractionDigits,
       })
-    ->format(value);
-  };
-};
+    ->format(value)
+  }
+}
