@@ -36,7 +36,7 @@ with custom date
 let date = Js.Date.makeWithYMD(~year=2020., ~month=11., ~date=12., ());
 
 let futureDate = Intl.DateTime.make(~date, ~locale=Some("sv-SE"), ());
-// futureDate: string = 2020-11-12
+// futureDate: string = 2020-12-12
 ```
 
 with date as string
