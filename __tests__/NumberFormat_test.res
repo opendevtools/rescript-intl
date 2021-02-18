@@ -11,48 +11,45 @@ open NumberFormat
 
 testAll(
   "EUR - base formatting of all locales",
-  list[
-    ("de", j`1.000,00\xA0€`),
-    ("en", j`€1,000.00`),
-    ("en-GB", j`€1,000.00`),
-    ("en-US", j`€1,000.00`),
-    ("es", j`1000,00\xA0€`),
-    ("es-MX", j`EUR\xA01000.00`),
-    ("fi", j`1\xA0000,00\xA0€`),
-    ("it", j`1.000,00\xA0€`),
-    ("ja", j`€1,000.00`),
-    ("ko", j`€1,000.00`),
-    ("nl", j`€\xA01.000,00`),
-    ("pl", j`1000,00\xA0€`),
-    ("pt", j`€\xA01.000,00`),
-    ("pt-BR", j`€\xA01.000,00`),
-    ("ru", j`1\xA0000,00\xA0€`),
-    ("sv-SE", j`1\xA0000,00\xA0€`),
-    ("zh-CN", j`€1,000.00`),
-    ("zh-TW", j`€1,000.00`),
-  ],
+  list{
+    ("de", `1.000,00\xA0€`),
+    ("en", `€1,000.00`),
+    ("en-GB", `€1,000.00`),
+    ("en-US", `€1,000.00`),
+    ("es", `1000,00\xA0€`),
+    ("es-MX", `EUR\xA01000.00`),
+    ("fi", `1\xA0000,00\xA0€`),
+    ("it", `1.000,00\xA0€`),
+    ("ja", `€1,000.00`),
+    ("ko", `€1,000.00`),
+    ("nl", `€\xA01.000,00`),
+    ("pl", `1000,00\xA0€`),
+    ("pt", `€\xA01.000,00`),
+    ("pt-BR", `€\xA01.000,00`),
+    ("ru", `1\xA0000,00\xA0€`),
+    ("sv-SE", `1\xA0000,00\xA0€`),
+    ("zh-CN", `€1,000.00`),
+    ("zh-TW", `€1,000.00`),
+  },
   ((locale, expected)) => {
-  Currency.make(
-    ~value=1000.,
-    ~currency=Some("EUR"),
-    ~locale=Some(locale),
-    (),
-  )
-  |> expect
-  |> toEqual(expected)
-})
+    Currency.make(~value=1000., ~currency=Some("EUR"), ~locale=Some(locale), ())
+    |> expect
+    |> toEqual(expected)
+  },
+)
 
 describe("Swedish", () => {
   test("base for decimal", () => {
-    Decimal.make(~value=1000., ~locale=Some("sv-SE"), ())
-    |> expect
-    |> toEqual(j`1\xA0000,00`)
+    Decimal.make(~value=1000., ~locale=Some("sv-SE"), ()) |> expect |> toEqual(`1\xA0000,00`)
   })
 
   test("base for SEK", () => {
-    Currency.make(
-      ~value=1000.,
-      ~currency=Some("SEK"),
+    Currency.make(~value=1000., ~currency=Some("SEK"), ~locale=Some("sv-SE"), ())
+    |> expect
+    |> toEqual(`1\xA0000,00\xA0kr`)
+  })
+})
+
       ~locale=Some("sv-SE"),
       (),
     )
