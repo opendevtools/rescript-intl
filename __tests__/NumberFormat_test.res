@@ -50,10 +50,20 @@ describe("Swedish", () => {
   })
 })
 
+describe("Percent", () => {
+  test("formats percentages", () => {
+    Percent.make(~value=1., ~locale=Some("sv-SE"), ()) |> expect |> toEqual("100\xA0%")
+  })
+
+  test("formats percentages with decimals", () => {
+    Percent.make(
+      ~value=0.3456,
       ~locale=Some("sv-SE"),
+      ~minimumFractionDigits=Some(2),
+      ~maximumFractionDigits=Some(2),
       (),
     )
     |> expect
-    |> toEqual(j`1\xA0000,00\xA0kr`)
+    |> toEqual("34,56\xA0%")
   })
 })

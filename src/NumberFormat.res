@@ -2,8 +2,8 @@ type intl
 
 module Style = {
   /* Helper for "style" option. #decimal is the browser default */
-  @bs.deriving({jsConverter: newType})
-  type opt = [ | #currency | #decimal | #unit]
+  @deriving({jsConverter: newType})
+  type opt = [#currency | #decimal | #unit | #percent]
 
   include Utils.CreateOption({
     type t = opt
@@ -68,6 +68,22 @@ module Decimal = {
     ->format(value)
   }
 }
+
+module Percent = {
+  let make = (
+    ~value,
+    ~locale=None,
+    ~minimumFractionDigits=Some(0),
+    ~maximumFractionDigits=Some(0),
+    (),
+  ) => {
+    locale
+    ->numberFormat({
+      style: Style.make(Some(#percent)),
+      currency: None,
+      maximumFractionDigits: maximumFractionDigits,
+      minimumFractionDigits: minimumFractionDigits,
+    })
     ->format(value)
   }
 }

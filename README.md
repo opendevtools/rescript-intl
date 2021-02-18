@@ -89,6 +89,14 @@ let parsedNumber =
 // parsedNumber: string = "1 000,00"
 ```
 
+#### Percent
+
+```reason
+let percent =
+  Intl.NumberFormat.Percent.make(~value=0.3456., ~locale=Some("sv-SE"), ());
+// percent: string = "34,56 %"
+```
+
 ## Node
 
 **Node 13 added full ICU support and there should be no issues with wrong
