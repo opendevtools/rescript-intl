@@ -1,5 +1,10 @@
 {
-  "name": "re-intl",
+  "name": "@opendevtools/rescript-intl",
+  "description": "Parse dates and numbers using the Intl API in ReScript",
+  "author": "Rickard Natt och Dag <rickard@hey.com> (http://willcodefor.beer/)",
+  "publishConfig": {
+    "access": "public"
+  },
   "version": "2.0.0",
   "scripts": {
     "clean": "bsb -clean-world",
@@ -10,7 +15,10 @@
     "test:watch": "jest --watch"
   },
   "keywords": [
-    "BuckleScript"
+    "bucklescript",
+    "rescript",
+    "intl",
+    "formatting"
   ],
   "author": "",
   "license": "MIT",
