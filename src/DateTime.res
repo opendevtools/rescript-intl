@@ -1,8 +1,8 @@
 type intl
 
 module WeekdayEra = {
-  @bs.deriving({jsConverter: newType})
-  type opt = [ | #long | #short | #narrow]
+  @deriving({jsConverter: newType})
+  type opt = [#long | #short | #narrow]
 
   include Utils.CreateOption({
     type t = opt
@@ -12,8 +12,8 @@ module WeekdayEra = {
 }
 
 module YearDay = {
-  @bs.deriving({jsConverter: newType})
-  type opt = [ | #numeric | @bs.as("2-digit") #twoDigit]
+  @deriving({jsConverter: newType})
+  type opt = [#numeric | @as("2-digit") #twoDigit]
 
   include Utils.CreateOption({
     type t = opt
@@ -23,13 +23,13 @@ module YearDay = {
 }
 
 module Month = {
-  @bs.deriving({jsConverter: newType})
+  @deriving({jsConverter: newType})
   type opt = [
     | #long
     | #short
     | #narrow
     | #numeric
-    | @bs.as("2-digit") #twoDigit
+    | @as("2-digit") #twoDigit
   ]
 
   include Utils.CreateOption({
@@ -48,8 +48,7 @@ module Options = {
     month: option<Month.abs_t>,
   }
 
-  let make =
-      (~weekday=None, ~month=None, ~year=None, ~day=None, ~era=None, ()) => {
+  let make = (~weekday=None, ~month=None, ~year=None, ~day=None, ~era=None, ()) => {
     day: YearDay.make(day),
     era: WeekdayEra.make(era),
     month: Month.make(month),
@@ -62,9 +61,8 @@ module Options = {
   Intl.DateTimeFormat
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat
  */
-@bs.new @bs.scope("Intl")
-external dateTimeFormat: (option<string>, option<Options.t>) => intl =
-  "DateTimeFormat"
+@new @scope("Intl")
+external dateTimeFormat: (option<string>, option<Options.t>) => intl = "DateTimeFormat"
 
 /* Intl.DateTimeFormat.prototype.format() */
 @bs.send external format: (intl, Js.Date.t) => string = "format"
@@ -73,12 +71,11 @@ let make = (~date=Js.Date.make(), ~locale=None, ~options=?, ()) => {
   locale->dateTimeFormat(options)->format(date)
 }
 
-let makeFromString =
-    (
-      ~date=Js.Date.make() |> Js.Date.toISOString,
-      ~locale=None,
-      ~options=?,
-      (),
-    ) => {
+let makeFromString = (
+  ~date=Js.Date.make() |> Js.Date.toISOString,
+  ~locale=None,
+  ~options=?,
+  (),
+) => {
   locale->dateTimeFormat(options)->format(date |> Js.Date.fromString)
 }

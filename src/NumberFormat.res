@@ -24,52 +24,50 @@ type options = {
   Intl.NumberFormat
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat
  */
-@bs.new @bs.scope("Intl")
+@new @scope("Intl")
 external numberFormat: (option<string>, options) => intl = "NumberFormat"
 
 /* Intl.NumberFormat.prototype.format() */
 @bs.send external format: (intl, float) => string = "format"
 
 module Currency = {
-  let make =
-      (
-        ~value,
-        ~locale=None,
-        ~minimumFractionDigits=Some(2),
-        ~maximumFractionDigits=Some(2),
-        ~currency=None,
-        ~style=Some(#currency),
-        (),
-      ) => {
+  let make = (
+    ~value,
+    ~locale=None,
+    ~minimumFractionDigits=Some(2),
+    ~maximumFractionDigits=Some(2),
+    ~currency=None,
+    (),
+  ) => {
     locale
     ->numberFormat({
-        style: Style.make(style),
-        currency,
-        maximumFractionDigits,
-        minimumFractionDigits,
-      })
+      style: Style.make(Some(#currency)),
+      currency: currency,
+      maximumFractionDigits: maximumFractionDigits,
+      minimumFractionDigits: minimumFractionDigits,
+    })
     ->format(value)
   }
 }
 
 module Decimal = {
-  let make =
-      (
-        ~value,
-        ~locale=None,
-        ~minimumFractionDigits=Some(2),
-        ~maximumFractionDigits=Some(2),
-        ~currency=None,
-        ~style=Some(#decimal),
-        (),
-      ) => {
+  let make = (
+    ~value,
+    ~locale=None,
+    ~minimumFractionDigits=Some(2),
+    ~maximumFractionDigits=Some(2),
+    (),
+  ) => {
     locale
     ->numberFormat({
-        style: Style.make(style),
-        currency,
-        maximumFractionDigits,
-        minimumFractionDigits,
-      })
+      style: Style.make(Some(#decimal)),
+      currency: None,
+      maximumFractionDigits: maximumFractionDigits,
+      minimumFractionDigits: minimumFractionDigits,
+    })
+    ->format(value)
+  }
+}
     ->format(value)
   }
 }
