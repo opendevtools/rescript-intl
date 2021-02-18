@@ -1,23 +1,23 @@
-# re-intl
+# rescript-intl
 
 [![npm version](https://badge.fury.io/js/re-intl.svg)](https://badge.fury.io/js/re-intl)
 [![](https://github.com/believer/re-intl/workflows/Release/badge.svg)](https://github.com/believer/re-intl/actions?workflow=Release)
 
-`re-intl` helps you with date, number and currency formatting in ReasonML
-(BuckleScript). Everything is built on top of [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) which comes built-in with
+`rescript-intl` helps you with date, number and currency formatting in ReScript.
+Everything is built on top of [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) which comes built-in with
 browsers >= IE11 as well as Node.
 
 ## Get started
 
 ```
-npm install re-intl
+npm install @opendevtools/rescript-intl
 ```
 
-Add `re-intl` in `bsconfig.json`
+Add `rescript-intl` in `bsconfig.json`
 
 ```
 {
-  "dependencies": ["re-intl"]
+  "dependencies": ["@opendevtools/rescript-intl"]
 }
 ```
 
@@ -27,7 +27,7 @@ Add `re-intl` in `bsconfig.json`
 
 ```reason
 let today = Intl.DateTime.make(~locale=Some("sv-SE"), ());
-// today: string = 2020-03-18 (based on current date)
+// today: string = "2020-03-18"
 ```
 
 with custom date
@@ -36,14 +36,14 @@ with custom date
 let date = Js.Date.makeWithYMD(~year=2020., ~month=11., ~date=12., ());
 
 let futureDate = Intl.DateTime.make(~date, ~locale=Some("sv-SE"), ());
-// futureDate: string = 2020-12-12
+// futureDate: string = "2020-12-12"
 ```
 
 with date as string
 
 ```reason
 let futureDate = Intl.DateTime.makeFromString(~date="2020-11-12", ~locale=Some("sv-SE"), ());
-// futureDate: string = 2020-11-12
+// futureDate: string = "2020-11-12"
 ```
 
 and with some `options`
@@ -63,7 +63,7 @@ let today =
       ),
     (),
   );
-// today: onsdag 18 mars 2020 e.Kr. (based on current date)
+// today: string = "onsdag 18 mars 2020 e.Kr".
 ```
 
 ### NumberFormat
@@ -91,7 +91,9 @@ let parsedNumber =
 
 ## Node
 
-Node only has support for `en-US` locale by default. If your code is failing
+**Node 13 added full ICU support and there should be no issues with wrong
+formatting.** If you need to
+run a Node version before 13 it only has support for `en-US` locale by default. If your code is failing
 with wrong formatting you'll need to install full locale support using:
 
 ```
@@ -99,4 +101,3 @@ npm install -g full-icu
 ```
 
 The installer will print out what you need to set the environment variable `NODE_ICU_DATA` to in order to get full support.
-
