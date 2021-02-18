@@ -7,27 +7,25 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest 
-
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 13.8
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
 
-    - name: Run tests and linting
-      run: |
-        npm ci
-        npm run build
-        npm test
-      env:
-        CI: true
+      - name: Run tests and linting
+        run: |
+          npm ci
+          npm run build
+          npm test
+        env:
+          CI: true
 
-    - name: Create release using semantic-release
-      run: npx semantic-release
-      env:
-        # GITHUB_TOKEN is added automatically by GitHub
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        CI: true
+      - name: Create release using semantic-release
+        run: npx semantic-release
+        env:
+          # GITHUB_TOKEN is added automatically by GitHub
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          CI: true
