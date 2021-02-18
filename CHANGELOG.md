@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/opendevtools/rescript-intl/compare/v2.0.0...v2.0.1) (2021-02-18)
+
+
+### Bug Fixes
+
+* publish in opendevtools organization ([1c3c9a1](https://github.com/opendevtools/rescript-intl/commit/1c3c9a1345c6564cff10f82c4db49493b344cc11))
+
 # [2.0.0](https://github.com/believer/re-intl/compare/v1.0.0...v2.0.0) (2020-07-07)
 
 
