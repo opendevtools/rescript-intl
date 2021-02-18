@@ -1,7 +1,7 @@
 # rescript-intl
 
-[![npm version](https://badge.fury.io/js/re-intl.svg)](https://badge.fury.io/js/re-intl)
-[![](https://github.com/believer/re-intl/workflows/Release/badge.svg)](https://github.com/believer/re-intl/actions?workflow=Release)
+[![](https://github.com/opendevtools/rescript-intl/workflows/Release/badge.svg)](https://github.com/opendevtools/rescript-intl/actions?workflow=Release)
+[![npm (scoped)](https://img.shields.io/npm/v/@opendevtools/rescript-intl)](https://npm.im/@opendevtools/rescript-intl)
 
 `rescript-intl` helps you with date, number and currency formatting in ReScript.
 Everything is built on top of [Intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) which comes built-in with
