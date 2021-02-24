@@ -5,7 +5,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "2.1.0",
+  "version": "2.1.1",
   "scripts": {
     "clean": "bsb -clean-world",
     "build": "bsb -make-world",

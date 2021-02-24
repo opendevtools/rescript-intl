@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/opendevtools/rescript-intl/compare/v2.1.0...v2.1.1) (2021-02-24)
+
+
+### Bug Fixes
+
+* update bsconfig.json ([#3](https://github.com/opendevtools/rescript-intl/issues/3)) ([419eba3](https://github.com/opendevtools/rescript-intl/commit/419eba31da6d0d405e1642a334459d6d00b494ca))
+
 # [2.1.0](https://github.com/opendevtools/rescript-intl/compare/v2.0.1...v2.1.0) (2021-02-18)
 
 
