@@ -22,7 +22,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@glennsl/bs-jest": "0.6.0",
+    "@glennsl/bs-jest": "0.7.0",
     "@semantic-release/changelog": "5.0.1",
     "@semantic-release/git": "9.0.0",
     "bs-platform": "9.0.1",
