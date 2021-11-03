@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/opendevtools/rescript-intl/compare/v2.1.1...v2.2.0) (2021-11-03)
+
+
+### Features
+
+* add dateStyle and timeStyle ([614ad76](https://github.com/opendevtools/rescript-intl/commit/614ad7652dac6a0c69286dfb6fedadb3e1b220d3))
+
 ## [2.1.1](https://github.com/opendevtools/rescript-intl/compare/v2.1.0...v2.1.1) (2021-02-24)
 
 
