@@ -144,7 +144,7 @@ describe("Swedish", () => {
       (#short, "14:00"),
       (#long, "14:00:00 CET"),
       (#medium, "14:00:00"),
-      (#full, "kl. 14:00:00 centraleuropeisk normaltid"),
+      (#full, "14:00:00 centraleuropeisk normaltid"),
     },
     ((timeStyle, expected)) => {
       formatter(~options=Options.make(~timeStyle=Some(timeStyle), ()), ())
