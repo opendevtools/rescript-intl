@@ -10,7 +10,7 @@
     "clean": "bsb -clean-world",
     "build": "bsb -make-world",
     "start": "BS_WATCH_CLEAR=true bsb -make-world -w",
-    "test": "is-ci test:ci test:watch",
+    "test": "is-ci-cli test:ci test:watch",
     "test:ci": "jest",
     "test:watch": "jest --watch"
   },
@@ -26,5 +26,6 @@
     "bs-platform": "9.0.2",
     "is-ci-cli": "2.2.0",
     "mockdate": "3.0.5"
-  }
+  },
+  "dependencies": {}
 }

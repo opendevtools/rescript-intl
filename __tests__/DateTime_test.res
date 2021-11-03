@@ -2,8 +2,25 @@ open Jest
 open Expect
 open DateTime
 
-beforeAll(() => MockDate.set("2020-01-01"))
+beforeAll(() => MockDate.set("2020-01-01 14:00"))
 afterAll(() => MockDate.reset())
+
+let today = Intl.DateTime.make(
+  ~locale=Some("sv-SE"),
+  ~options=Options.make(
+    ~year=Some(#numeric),
+    ~weekday=Some(#long),
+    ~day=Some(#twoDigit),
+    ~era=Some(#narrow),
+    ~month=Some(#long),
+    (),
+  ),
+  (),
+)
+
+let date = Js.Date.makeWithYMD(~year=2020., ~month=11., ~date=12., ())
+
+let futureDate = Intl.DateTime.make(~date, ~locale=Some("sv-SE"), ())
 
 test("default language", () => {
   make() |> expect |> toEqual("1/1/2020")
@@ -105,21 +122,34 @@ describe("Swedish", () => {
     |> expect
     |> toEqual("onsdag 01 januari 2020 e.Kr.")
   })
+
+  testAll(
+    "dateStyle",
+    list{
+      (#short, "2020-01-01"),
+      (#long, "1 januari 2020"),
+      (#medium, "1 jan. 2020"),
+      (#full, "onsdag 1 januari 2020"),
+    },
+    ((dateStyle, expected)) => {
+      formatter(~options=Options.make(~dateStyle=Some(dateStyle), ()), ())
+      |> expect
+      |> toEqual(expected)
+    },
+  )
+
+  testAll(
+    "timeStyle",
+    list{
+      (#short, "14:00"),
+      (#long, "14:00:00 CET"),
+      (#medium, "14:00:00"),
+      (#full, "kl. 14:00:00 centraleuropeisk normaltid"),
+    },
+    ((timeStyle, expected)) => {
+      formatter(~options=Options.make(~timeStyle=Some(timeStyle), ()), ())
+      |> expect
+      |> toEqual(expected)
+    },
+  )
 })
-
-let today = Intl.DateTime.make(
-  ~locale=Some("sv-SE"),
-  ~options=Options.make(
-    ~year=Some(#numeric),
-    ~weekday=Some(#long),
-    ~day=Some(#twoDigit),
-    ~era=Some(#narrow),
-    ~month=Some(#long),
-    (),
-  ),
-  (),
-)
-
-let date = Js.Date.makeWithYMD(~year=2020., ~month=11., ~date=12., ())
-
-let futureDate = Intl.DateTime.make(~date, ~locale=Some("sv-SE"), ())

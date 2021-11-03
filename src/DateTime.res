@@ -22,6 +22,17 @@ module YearDay = {
   })
 }
 
+module Style = {
+  @deriving({jsConverter: newType})
+  type opt = [#full | #long | #medium | #short]
+
+  include Utils.CreateOption({
+    type t = opt
+    type abs_t = abs_opt
+    let make = optToJs
+  })
+}
+
 module Month = {
   @deriving({jsConverter: newType})
   type opt = [
@@ -46,14 +57,27 @@ module Options = {
     year: option<YearDay.abs_t>,
     day: option<YearDay.abs_t>,
     month: option<Month.abs_t>,
+    dateStyle: option<Style.abs_t>,
+    timeStyle: option<Style.abs_t>,
   }
 
-  let make = (~weekday=None, ~month=None, ~year=None, ~day=None, ~era=None, ()) => {
+  let make = (
+    ~weekday=None,
+    ~month=None,
+    ~year=None,
+    ~day=None,
+    ~era=None,
+    ~dateStyle=None,
+    ~timeStyle=None,
+    (),
+  ) => {
     day: YearDay.make(day),
     era: WeekdayEra.make(era),
     month: Month.make(month),
     weekday: WeekdayEra.make(weekday),
     year: YearDay.make(year),
+    dateStyle: Style.make(dateStyle),
+    timeStyle: Style.make(timeStyle),
   }
 }
 
