@@ -97,6 +97,33 @@ let percent =
 // percent: string = "34,56 %"
 ```
 
+### ListFormat
+
+```reason
+// And based lists (default, #type = #conjunction) in Swedish
+let data =
+  Intl.ListFormat.make(["Cat", "Tiger", "Lion"], ~locale=Some("sv"), ());
+// data: string = "Cat, Tiger och Lion"
+
+// Or based lists
+let data =
+  Intl.ListFormat.make(["Cat", "Tiger", "Lion"],
+  ~options=Options.make(~type_=Some(#disjunction), ()), ());
+// data: string = "Cat, Tiger, or Lion"
+
+// Unit based lists
+let data =
+  Intl.ListFormat.make(["Cat", "Tiger", "Lion"],
+  ~options=Options.make(~type_=Some(#unit), ()), ());
+// data: string = "Cat, Tiger, Lion"
+
+// Short and narrow styles are only available for unit type
+let data =
+  Intl.ListFormat.make(["Cat", "Tiger", "Lion"],
+  ~options=Options.make(~type_=Some(#unit), ~style=Some(#narrow), ()), ());
+// data: string = "Cat Tiger Lion"
+```
+
 ## Node
 
 **Node 13 added full ICU support and there should be no issues with wrong
