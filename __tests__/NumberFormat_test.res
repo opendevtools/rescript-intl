@@ -27,12 +27,12 @@ testAll(
     ("pt", `€\xA01.000,00`),
     ("pt-BR", `€\xA01.000,00`),
     ("ru", `1\xA0000,00\xA0€`),
-    ("sv-SE", `1\xA0000,00\xA0€`),
+    ("sv", `1\xA0000,00\xA0€`),
     ("zh-CN", `€1,000.00`),
     ("zh-TW", `€1,000.00`),
   },
   ((locale, expected)) => {
-    Currency.make(~value=1000., ~currency=Some("EUR"), ~locale=Some(locale), ())
+    Currency.make(~value=1000., ~currency="EUR", ~locale=Some(locale), ())
     |> expect
     |> toEqual(expected)
   },
@@ -40,11 +40,11 @@ testAll(
 
 describe("Swedish", () => {
   test("base for decimal", () => {
-    Decimal.make(~value=1000., ~locale=Some("sv-SE"), ()) |> expect |> toEqual(`1\xA0000,00`)
+    Decimal.make(~value=1000., ~locale=Some("sv"), ()) |> expect |> toEqual(`1\xA0000,00`)
   })
 
   test("base for SEK", () => {
-    Currency.make(~value=1000., ~currency=Some("SEK"), ~locale=Some("sv-SE"), ())
+    Currency.make(~value=1000., ~currency="SEK", ~locale=Some("sv"), ())
     |> expect
     |> toEqual(`1\xA0000,00\xA0kr`)
   })
@@ -52,13 +52,13 @@ describe("Swedish", () => {
 
 describe("Percent", () => {
   test("formats percentages", () => {
-    Percent.make(~value=1., ~locale=Some("sv-SE"), ()) |> expect |> toEqual("100\xA0%")
+    Percent.make(~value=1., ~locale=Some("sv"), ()) |> expect |> toEqual("100\xA0%")
   })
 
   test("formats percentages with decimals", () => {
     Percent.make(
       ~value=0.3456,
-      ~locale=Some("sv-SE"),
+      ~locale=Some("sv"),
       ~minimumFractionDigits=Some(2),
       ~maximumFractionDigits=Some(2),
       (),

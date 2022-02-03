@@ -26,16 +26,16 @@ external numberFormat: (option<string>, options) => intl = "NumberFormat"
 module Currency = {
   let make = (
     ~value,
+    ~currency,
     ~locale=None,
     ~minimumFractionDigits=Some(2),
     ~maximumFractionDigits=Some(2),
-    ~currency=None,
     (),
   ) => {
     locale
     ->numberFormat({
       style: Some(#currency),
-      currency: currency,
+      currency: Some(currency),
       maximumFractionDigits: maximumFractionDigits,
       minimumFractionDigits: minimumFractionDigits,
     })

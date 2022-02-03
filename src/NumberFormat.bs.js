@@ -5,11 +5,10 @@ var Caml_option = require("rescript/lib/js/caml_option.js");
 
 var Style = {};
 
-function make(value, localeOpt, minimumFractionDigitsOpt, maximumFractionDigitsOpt, currencyOpt, param) {
+function make(value, currency, localeOpt, minimumFractionDigitsOpt, maximumFractionDigitsOpt, param) {
   var locale = localeOpt !== undefined ? Caml_option.valFromOption(localeOpt) : undefined;
   var minimumFractionDigits = minimumFractionDigitsOpt !== undefined ? Caml_option.valFromOption(minimumFractionDigitsOpt) : 2;
   var maximumFractionDigits = maximumFractionDigitsOpt !== undefined ? Caml_option.valFromOption(maximumFractionDigitsOpt) : 2;
-  var currency = currencyOpt !== undefined ? Caml_option.valFromOption(currencyOpt) : undefined;
   return new (Intl.NumberFormat)(locale, {
                 minimumFractionDigits: minimumFractionDigits,
                 maximumFractionDigits: maximumFractionDigits,
