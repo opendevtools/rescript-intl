@@ -1,3 +1,19 @@
+# [4.0.0](https://github.com/opendevtools/rescript-intl/compare/v3.0.0...v4.0.0) (2022-02-03)
+
+
+### Features
+
+* make currency option required ([e8feb72](https://github.com/opendevtools/rescript-intl/commit/e8feb72413ef0061ea43d96841a29657356cb24e))
+
+
+### BREAKING CHANGES
+
+* When the `style` of `NumberFormat` is set to
+`currency`, the `currency` option is required as it does not
+have a default value.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#parameters
+
 # [3.0.0](https://github.com/opendevtools/rescript-intl/compare/v2.2.0...v3.0.0) (2022-02-03)
 
 
