@@ -117,12 +117,14 @@ let data =
   ~options=Options.make(~type_=Some(#unit), ()), ());
 // data: string = "Cat, Tiger, Lion"
 
-// Short and narrow styles are only available for unit type
 let data =
   Intl.ListFormat.make(["Cat", "Tiger", "Lion"],
   ~options=Options.make(~type_=Some(#unit), ~style=Some(#narrow), ()), ());
 // data: string = "Cat Tiger Lion"
 ```
+
+
+Short, `#short`, and narrow, `#narrow`, styles are [only available for `#unit` type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/ListFormat/ListFormat#parameters). If you pass in any other type than `#unit` with those styles, the library takes care of it and changes the `type` to `#unit`.
 
 ## Node
 
