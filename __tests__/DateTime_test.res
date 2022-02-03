@@ -10,7 +10,7 @@ let today = Intl.DateTime.make(
   ~options=Options.make(
     ~year=Some(#numeric),
     ~weekday=Some(#long),
-    ~day=Some(#twoDigit),
+    ~day=Some(#"2-digit"),
     ~era=Some(#narrow),
     ~month=Some(#long),
     (),
@@ -90,19 +90,19 @@ describe("Swedish", () => {
     },
   )
 
-  testAll("day", list{(#numeric, "1"), (#twoDigit, "01")}, ((day, expected)) => {
+  testAll("day", list{(#numeric, "1"), (#"2-digit", "01")}, ((day, expected)) => {
     formatter(~options=Options.make(~day=Some(day), ()), ()) |> expect |> toEqual(expected)
   })
 
   testAll(
     "month",
-    list{(#long, "januari"), (#short, "jan."), (#narrow, "J"), (#numeric, "1"), (#twoDigit, "01")},
+    list{(#long, "januari"), (#short, "jan."), (#narrow, "J"), (#numeric, "1"), (#"2-digit", "01")},
     ((month, expected)) => {
       formatter(~options=Options.make(~month=Some(month), ()), ()) |> expect |> toEqual(expected)
     },
   )
 
-  testAll("year", list{(#numeric, "2020"), (#twoDigit, "20")}, ((year, expected)) => {
+  testAll("year", list{(#numeric, "2020"), (#"2-digit", "20")}, ((year, expected)) => {
     formatter(~options=Options.make(~year=Some(year), ()), ()) |> expect |> toEqual(expected)
   })
 
@@ -112,7 +112,7 @@ describe("Swedish", () => {
       ~options=Options.make(
         ~year=Some(#numeric),
         ~weekday=Some(#long),
-        ~day=Some(#twoDigit),
+        ~day=Some(#"2-digit"),
         ~era=Some(#narrow),
         ~month=Some(#long),
         (),

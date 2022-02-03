@@ -1,64 +1,36 @@
 type intl
 
 module WeekdayEra = {
-  @deriving({jsConverter: newType})
-  type opt = [#long | #short | #narrow]
-
-  include Utils.CreateOption({
-    type t = opt
-    type abs_t = abs_opt
-    let make = optToJs
-  })
+  type t = [#long | #short | #narrow]
 }
 
 module YearDay = {
-  @deriving({jsConverter: newType})
-  type opt = [#numeric | @as("2-digit") #twoDigit]
-
-  include Utils.CreateOption({
-    type t = opt
-    type abs_t = abs_opt
-    let make = optToJs
-  })
+  type t = [#numeric | #"2-digit"]
 }
 
 module Style = {
-  @deriving({jsConverter: newType})
-  type opt = [#full | #long | #medium | #short]
-
-  include Utils.CreateOption({
-    type t = opt
-    type abs_t = abs_opt
-    let make = optToJs
-  })
+  type t = [#full | #long | #medium | #short]
 }
 
 module Month = {
-  @deriving({jsConverter: newType})
-  type opt = [
+  type t = [
     | #long
     | #short
     | #narrow
     | #numeric
-    | @as("2-digit") #twoDigit
+    | #"2-digit"
   ]
-
-  include Utils.CreateOption({
-    type t = opt
-    type abs_t = abs_opt
-    let make = optToJs
-  })
 }
 
 module Options = {
   type t = {
-    weekday: option<WeekdayEra.abs_t>,
-    era: option<WeekdayEra.abs_t>,
-    year: option<YearDay.abs_t>,
-    day: option<YearDay.abs_t>,
-    month: option<Month.abs_t>,
-    dateStyle: option<Style.abs_t>,
-    timeStyle: option<Style.abs_t>,
+    weekday: option<WeekdayEra.t>,
+    era: option<WeekdayEra.t>,
+    year: option<YearDay.t>,
+    day: option<YearDay.t>,
+    month: option<Month.t>,
+    dateStyle: option<Style.t>,
+    timeStyle: option<Style.t>,
   }
 
   let make = (
@@ -71,13 +43,13 @@ module Options = {
     ~timeStyle=None,
     (),
   ) => {
-    day: YearDay.make(day),
-    era: WeekdayEra.make(era),
-    month: Month.make(month),
-    weekday: WeekdayEra.make(weekday),
-    year: YearDay.make(year),
-    dateStyle: Style.make(dateStyle),
-    timeStyle: Style.make(timeStyle),
+    day: day,
+    era: era,
+    month: month,
+    weekday: weekday,
+    year: year,
+    dateStyle: dateStyle,
+    timeStyle: timeStyle,
   }
 }
 
@@ -89,7 +61,7 @@ module Options = {
 external dateTimeFormat: (option<string>, option<Options.t>) => intl = "DateTimeFormat"
 
 /* Intl.DateTimeFormat.prototype.format() */
-@bs.send external format: (intl, Js.Date.t) => string = "format"
+@send external format: (intl, Js.Date.t) => string = "format"
 
 let make = (~date=Js.Date.make(), ~locale=None, ~options=?, ()) => {
   locale->dateTimeFormat(options)->format(date)

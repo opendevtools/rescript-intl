@@ -1,3 +1,3 @@
-@bs.module("mockdate") external set: string => unit = "set"
+@module("mockdate") external set: string => unit = "set"
 
-@bs.module("mockdate") external reset: unit => unit = "reset"
+@module("mockdate") external reset: unit => unit = "reset"

@@ -2,21 +2,14 @@ type intl
 
 module Style = {
   /* Helper for "style" option. #decimal is the browser default */
-  @deriving({jsConverter: newType})
-  type opt = [#currency | #decimal | #unit | #percent]
-
-  include Utils.CreateOption({
-    type t = opt
-    type abs_t = abs_opt
-    let make = optToJs
-  })
+  type t = [#currency | #decimal | #unit | #percent]
 }
 
 /* Options for Intl.NumberFormat */
 type options = {
   minimumFractionDigits: option<int>,
   maximumFractionDigits: option<int>,
-  style: option<Style.abs_t>,
+  style: option<Style.t>,
   currency: option<string>,
 }
 
@@ -28,7 +21,7 @@ type options = {
 external numberFormat: (option<string>, options) => intl = "NumberFormat"
 
 /* Intl.NumberFormat.prototype.format() */
-@bs.send external format: (intl, float) => string = "format"
+@send external format: (intl, float) => string = "format"
 
 module Currency = {
   let make = (
@@ -41,7 +34,7 @@ module Currency = {
   ) => {
     locale
     ->numberFormat({
-      style: Style.make(Some(#currency)),
+      style: Some(#currency),
       currency: currency,
       maximumFractionDigits: maximumFractionDigits,
       minimumFractionDigits: minimumFractionDigits,
@@ -60,7 +53,7 @@ module Decimal = {
   ) => {
     locale
     ->numberFormat({
-      style: Style.make(Some(#decimal)),
+      style: Some(#decimal),
       currency: None,
       maximumFractionDigits: maximumFractionDigits,
       minimumFractionDigits: minimumFractionDigits,
@@ -79,7 +72,7 @@ module Percent = {
   ) => {
     locale
     ->numberFormat({
-      style: Style.make(Some(#percent)),
+      style: Some(#percent),
       currency: None,
       maximumFractionDigits: maximumFractionDigits,
       minimumFractionDigits: minimumFractionDigits,
