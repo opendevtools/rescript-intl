@@ -26,7 +26,7 @@ Add `rescript-intl` in `bsconfig.json`
 ### DateTime
 
 ```reason
-let today = Intl.DateTime.make(~locale=Some("sv-SE"), ());
+let today = Intl.DateTime.make(~locale=Some("sv"), ());
 // today: string = "2020-03-18"
 ```
 
@@ -35,14 +35,14 @@ with custom date
 ```reason
 let date = Js.Date.makeWithYMD(~year=2020., ~month=11., ~date=12., ());
 
-let futureDate = Intl.DateTime.make(~date, ~locale=Some("sv-SE"), ());
+let futureDate = Intl.DateTime.make(~date, ~locale=Some("sv"), ());
 // futureDate: string = "2020-12-12"
 ```
 
 with date as string
 
 ```reason
-let futureDate = Intl.DateTime.makeFromString(~date="2020-11-12", ~locale=Some("sv-SE"), ());
+let futureDate = Intl.DateTime.makeFromString(~date="2020-11-12", ~locale=Some("sv"), ());
 // futureDate: string = "2020-11-12"
 ```
 
@@ -51,14 +51,14 @@ and with some `options`
 ```reason
 let today =
   Intl.DateTime.make(
-    ~locale=Some("sv-SE"),
+    ~locale=Some("sv"),
     ~options=
       Options.make(
-        ~year=Some(`numeric),
-        ~weekday=Some(`long),
-        ~day=Some(`twoDigit),
-        ~era=Some(`narrow),
-        ~month=Some(`long),
+        ~year=Some(#numeric),
+        ~weekday=Some(#long),
+        ~day=Some(#"2-digit"),
+        ~era=Some(#narrow),
+        ~month=Some(#long),
         (),
       ),
     (),
@@ -75,7 +75,7 @@ let krona =
   Intl.NumberFormat.Currency.make(
     ~value=1000.,
     ~currency=Some("SEK"),
-    ~locale=Some("sv-SE"),
+    ~locale=Some("sv"),
     (),
   );
 // krona: string = "1 000,00 kr"
@@ -85,7 +85,7 @@ let krona =
 
 ```reason
 let parsedNumber =
-  Intl.NumberFormat.Decimal.make(~value=1000., ~locale=Some("sv-SE"), ());
+  Intl.NumberFormat.Decimal.make(~value=1000., ~locale=Some("sv"), ());
 // parsedNumber: string = "1 000,00"
 ```
 
@@ -93,7 +93,7 @@ let parsedNumber =
 
 ```reason
 let percent =
-  Intl.NumberFormat.Percent.make(~value=0.3456., ~locale=Some("sv-SE"), ());
+  Intl.NumberFormat.Percent.make(~value=0.3456., ~locale=Some("sv"), ());
 // percent: string = "34,56 %"
 ```
 
