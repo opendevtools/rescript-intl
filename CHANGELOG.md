@@ -1,3 +1,16 @@
+# [3.0.0](https://github.com/opendevtools/rescript-intl/compare/v2.2.0...v3.0.0) (2022-02-03)
+
+
+### Features
+
+* add ListFormat ([d4c6b23](https://github.com/opendevtools/rescript-intl/commit/d4c6b23a469f1a612816da57ecdceaa6fa347378))
+* simplify DateTime and NumberFormat ([f7a80fe](https://github.com/opendevtools/rescript-intl/commit/f7a80fe38d2b3ac96054917f40363e205a57147c))
+
+
+### BREAKING CHANGES
+
+* #twoDigit changed to #"2-digit"
+
 # [2.2.0](https://github.com/opendevtools/rescript-intl/compare/v2.1.1...v2.2.0) (2021-11-03)
 
 
