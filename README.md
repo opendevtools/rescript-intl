@@ -74,7 +74,7 @@ let today =
 let krona =
   Intl.NumberFormat.Currency.make(
     ~value=1000.,
-    ~currency=Some("SEK"),
+    ~currency="SEK",
     ~locale=Some("sv"),
     (),
   );
