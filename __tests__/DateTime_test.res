@@ -81,9 +81,9 @@ describe("Swedish", () => {
   testAll(
     "era",
     list{
-      (#long, "1 1 2020 efter Kristus"),
-      (#short, "1 1 2020 e.Kr."),
-      (#narrow, "1 1 2020 e.Kr."),
+      (#long, "2020-01-01 efter Kristus"),
+      (#short, "2020-01-01 e.Kr."),
+      (#narrow, "2020-01-01 e.Kr."),
     },
     ((era, expected)) => {
       formatter(~options=Options.make(~era=Some(era), ()), ()) |> expect |> toEqual(expected)
