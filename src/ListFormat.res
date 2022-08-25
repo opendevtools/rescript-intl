@@ -16,8 +16,8 @@ module Options = {
   }
 
   let make = (~style=None, ~type_=None, ()) => {
-    type_: type_,
-    style: style,
+    type_,
+    style,
   }
 }
 
@@ -41,7 +41,7 @@ let make = (listData, ~locale=None, ~options=?, ()) => {
     | (Some(#disjunction), Some(#narrow))
     | (Some(#conjunction), Some(#short))
     | (Some(#disjunction), Some(#short)) =>
-      Some({type_: Some(#unit), style: style})
+      Some({type_: Some(#unit), style})
     | _ => options
     }
   | None => None

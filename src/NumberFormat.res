@@ -36,8 +36,8 @@ module Currency = {
     ->numberFormat({
       style: Some(#currency),
       currency: Some(currency),
-      maximumFractionDigits: maximumFractionDigits,
-      minimumFractionDigits: minimumFractionDigits,
+      maximumFractionDigits,
+      minimumFractionDigits,
     })
     ->format(value)
   }
@@ -55,8 +55,8 @@ module Decimal = {
     ->numberFormat({
       style: Some(#decimal),
       currency: None,
-      maximumFractionDigits: maximumFractionDigits,
-      minimumFractionDigits: minimumFractionDigits,
+      maximumFractionDigits,
+      minimumFractionDigits,
     })
     ->format(value)
   }
@@ -74,8 +74,8 @@ module Percent = {
     ->numberFormat({
       style: Some(#percent),
       currency: None,
-      maximumFractionDigits: maximumFractionDigits,
-      minimumFractionDigits: minimumFractionDigits,
+      maximumFractionDigits,
+      minimumFractionDigits,
     })
     ->format(value)
   }

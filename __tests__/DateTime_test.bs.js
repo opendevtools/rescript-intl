@@ -8,12 +8,10 @@ var Caml_option = require("rescript/lib/js/caml_option.js");
 
 beforeAll(function () {
       Mockdate.set("2020-01-01 14:00");
-      
     });
 
 afterAll(function () {
       Mockdate.reset();
-      
     });
 
 var today = DateTime.make(undefined, "sv-SE", DateTime.Options.make("long", "long", "numeric", "2-digit", "narrow", undefined, undefined, undefined), undefined);
@@ -290,33 +288,33 @@ Jest.describe("Swedish", (function (param) {
             }, (function (param) {
                 return Jest.Expect.toEqual(param[1], Jest.Expect.expect(DateTime.make(undefined, "sv-SE", DateTime.Options.make(undefined, undefined, undefined, undefined, undefined, Caml_option.some(param[0]), undefined, undefined), undefined)));
               }));
-        return Jest.testAll("timeStyle", {
+        Jest.testAll("timeStyle", {
+              hd: [
+                "short",
+                "14:00"
+              ],
+              tl: {
+                hd: [
+                  "long",
+                  "14:00:00 CET"
+                ],
+                tl: {
+                  hd: [
+                    "medium",
+                    "14:00:00"
+                  ],
+                  tl: {
                     hd: [
-                      "short",
-                      "14:00"
+                      "full",
+                      "14:00:00 centraleuropeisk normaltid"
                     ],
-                    tl: {
-                      hd: [
-                        "long",
-                        "14:00:00 CET"
-                      ],
-                      tl: {
-                        hd: [
-                          "medium",
-                          "14:00:00"
-                        ],
-                        tl: {
-                          hd: [
-                            "full",
-                            "14:00:00 centraleuropeisk normaltid"
-                          ],
-                          tl: /* [] */0
-                        }
-                      }
-                    }
-                  }, (function (param) {
-                      return Jest.Expect.toEqual(param[1], Jest.Expect.expect(DateTime.make(undefined, "sv-SE", DateTime.Options.make(undefined, undefined, undefined, undefined, undefined, undefined, Caml_option.some(param[0]), undefined), undefined)));
-                    }));
+                    tl: /* [] */0
+                  }
+                }
+              }
+            }, (function (param) {
+                return Jest.Expect.toEqual(param[1], Jest.Expect.expect(DateTime.make(undefined, "sv-SE", DateTime.Options.make(undefined, undefined, undefined, undefined, undefined, undefined, Caml_option.some(param[0]), undefined), undefined)));
+              }));
       }));
 
 exports.today = today;

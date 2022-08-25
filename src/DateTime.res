@@ -43,13 +43,13 @@ module Options = {
     ~timeStyle=None,
     (),
   ) => {
-    day: day,
-    era: era,
-    month: month,
-    weekday: weekday,
-    year: year,
-    dateStyle: dateStyle,
-    timeStyle: timeStyle,
+    day,
+    era,
+    month,
+    weekday,
+    year,
+    dateStyle,
+    timeStyle,
   }
 }
 

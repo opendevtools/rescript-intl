@@ -121,18 +121,18 @@ Jest.describe("Swedish", (function (param) {
         Jest.test("base for decimal", (function (param) {
                 return Jest.Expect.toEqual("1\xA0000,00", Jest.Expect.expect(NumberFormat.Decimal.make(1000, "sv", undefined, undefined, undefined)));
               }));
-        return Jest.test("base for SEK", (function (param) {
-                      return Jest.Expect.toEqual("1\xA0000,00\xA0kr", Jest.Expect.expect(NumberFormat.Currency.make(1000, "SEK", "sv", undefined, undefined, undefined)));
-                    }));
+        Jest.test("base for SEK", (function (param) {
+                return Jest.Expect.toEqual("1\xA0000,00\xA0kr", Jest.Expect.expect(NumberFormat.Currency.make(1000, "SEK", "sv", undefined, undefined, undefined)));
+              }));
       }));
 
 Jest.describe("Percent", (function (param) {
         Jest.test("formats percentages", (function (param) {
-                return Jest.Expect.toEqual("100\xa0%", Jest.Expect.expect(NumberFormat.Percent.make(1, "sv", undefined, undefined, undefined)));
+                return Jest.Expect.toEqual("100\xA0%", Jest.Expect.expect(NumberFormat.Percent.make(1, "sv", undefined, undefined, undefined)));
               }));
-        return Jest.test("formats percentages with decimals", (function (param) {
-                      return Jest.Expect.toEqual("34,56\xa0%", Jest.Expect.expect(NumberFormat.Percent.make(0.3456, "sv", 2, 2, undefined)));
-                    }));
+        Jest.test("formats percentages with decimals", (function (param) {
+                return Jest.Expect.toEqual("34,56\xA0%", Jest.Expect.expect(NumberFormat.Percent.make(0.3456, "sv", 2, 2, undefined)));
+              }));
       }));
 
 /*  Not a pure module */
