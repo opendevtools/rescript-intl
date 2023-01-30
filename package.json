@@ -27,6 +27,6 @@
     "mockdate": "3.0.5"
   },
   "dependencies": {
-    "rescript": "10.0.0"
+    "rescript": "10.1.2"
   }
 }
