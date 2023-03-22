@@ -1,6 +1,4 @@
-**DEPRECATED:** Use bindings from [rescript-core](https://github.com/rescript-association/rescript-core) instead.
-
----
+## **DEPRECATED:** Use bindings from [rescript-core](https://github.com/rescript-association/rescript-core) instead.
 
 # rescript-intl
 
