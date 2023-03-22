@@ -1,3 +1,7 @@
+**DEPRECATED:** Use bindings from [rescript-core](https://github.com/rescript-association/rescript-core) instead.
+
+---
+
 # rescript-intl
 
 [![](https://github.com/opendevtools/rescript-intl/workflows/Release/badge.svg)](https://github.com/opendevtools/rescript-intl/actions?workflow=Release)
